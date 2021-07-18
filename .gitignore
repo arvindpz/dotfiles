@@ -1,0 +1,5 @@
+# Ignore the actual config file
+.emacs.d
+
+# Ignore org_files
+emacs/org_files
