@@ -1,0 +1,165 @@
+
+Key bindings
+
+Command Description
+
+* Undo/Redo
+---
+| u    | Undo                                        |
+| C-g u | Redo (Press C-g again to reverse direction) |
+---
+
+* Repeat last command
+| . | Repeat last insertion session |
+* Basic open and closing of files
+---
+| C-x C-f | Find a file |
+| C-x C-s | Save        |
+| C-x C-c | Quit        |
+| C-x k   | Kill buffer |
+---
+
+* Cut/Copy/Paste
+---
+| C-SPC      | Set Mark                                    |
+| C-navigate | Move the cursor to the appropriate location |
+| C-x h      | Select the entire buffer                    |
+|------------+---------------------------------------------|
+| C-w        | Kill selection/Cut                          |
+| M-w        | Copy selection                              |
+| C-y        | Paste the selection                         |
+---
+
+* Moving the cursor
+---
+| C-f | Forward by one character  |
+| C-b | Backward by one character |
+|-----+---------------------------|
+| M-f | Forward by one word       |
+| M-b | Backward by one word      |
+|-----+---------------------------|
+| M-< | Beginning of the buffer   |
+| M-> | End of the buffer         |
+|-----+---------------------------|
+| C-v | Scroll down               |
+| M-v | Scroll up                 |
+---
+
+* Deleting text
+---
+| M-d         | Delete  the next word    |
+| M-Backspace | Delete the previous word |
+| C-k         | Kill line                |
+---
+
+* Working with windows
+---
+| C-x 2 | Split window as top/bottom                    |
+| C-x 3 | Split window as left/right                    |
+| C-x 1 | Close all other windows except the active one |
+| C-x o | Move the cursor to the other window           |
+---
+
+* Searching text
+---
+| C-s | Launch search and use C-s to navigate the results                          |
+| C-r | Launch search in the preceding text                                        |
+| C-g | Pressing this will place the cursor to the place where the search started  |
+---
+
+* Replace text
+---
+| M-%           | Prompt will appear to replace string. Might only search in the text that's ahead of the cursor |
+|               | y - replace, n - skip, ! - replace all, ? - help                                               |
+|---------------+------------------------------------------------------------------------------------------------|
+| M-% C-q <Tab> | To replace no printable chars like <Tab>, press C-q and then type the char to remove           |
+___
+
+* Finding a command
+---
+| M-x describe-function | If you know the command name, you can find out     |
+|                       | its key by using describe function                 |
+| M-x describe-key      | If you know the shortcut key, you can find out     |
+|                       | the command-name                                   |
+---
+
+* Insert/delete a comment
+---
+| M-; | Inserts comment at the position |
+---
+
+* Add prefix/suffix to every line
+---
+| C-x r t | Set Mark from the beginning of the line you want and mark uptil the target line |
+|         | This starts string rectangle. Type the text you want to add.                    |
+---
+
+* Remove prefix/suffix to every line
+---
+|         | Set Mark from the beginning of the line you want and mark uptil the target line |
+|         | Move the cursor in the last line to the first 'n' chars that you want to delete |
+| C-x r k | Then call kill-rectangle                                                        |
+---
+
+* Navigate through camelCaseWords
+---
+| M-x | global-subword-mode |
+---
+
+* To toggle spell-checker
+---
+| M-x | flyspell-mode |
+---
+
+* Directory Navigation
+---
+| M-x dired | RET - Open directory   |
+|           | n   - Next line        |
+|           | p   - Previous line    |
+|           | ESC - Parent directory |
+___
+
+* Useful commands
+---
+| M-x <mode-name>                     | Switch between modes                               |
+| M-x describe-key                    | Find command names/descriptions                    |
+| M-x describe-function               |                                                    |
+| M-x apropos-command                 |                                                    |
+| M-x describe-mode                   |                                                    |
+|                                     |                                                    |
+| M-x list-matching-lines             | List lines                                         |
+| M-x delete-matching-lines           |                                                    |
+| M-x delete-non-matching-lines       |                                                    |
+| M-x delete-duplicate-lines          |                                                    |
+|                                     |                                                    |
+| M-x highlight-phrase                | Highlight Words                                    |
+| M-x highlight-regexp                |                                                    |
+| M-x highlight-lines-matching-regexp |                                                    |
+|                                     |                                                    |
+| M-x sort-lines                      | Select a region first to sort                      |
+| M-x reverse-region                  |                                                    |
+| M-x sort-fields                     | Usage: C-u 2 M-x sort-fields to sort second column |
+| M-x sort-numeric-fields             | First field is 1                                   |
+|                                     |                                                    |
+| M-x delete-trailing-whitespace      |                                                    |
+| M-x whitespace-mode                 | Make spaces and tabs visible                       |
+|                                     |                                                    |
+| M-x copy-to-register                | Give this a single char name -> 'a' or '1'         |
+| M-x insert-register                 | Shortcut to copy/insert -> [C-x r s] [C-x r i]     |
+|                                     |                                                    |
+| M-x eval-region                     | Evaluate region of code                            |
+| M-x eval-buffer                     | Evaluate whole buffer                              |
+| M-x load-file                       |                                                    |
+|                                     |                                                    |
+| C-u M-x shell                       | Start a shell within emacs: Enter appropriate name |
+---
+* Fun with emacs
+---
+| M-x tetris               | Start tetris. Use arrow keys to move blocks |
+| M-x kill-buffer          | Close tetris                                |
+|                          |                                             |
+| M-x split-window-below   | Split top/bottom                            |
+| M-x split-window-right   | Split left/right                            |
+| M-x delete-other-windows | Unsplit                                     |
+| M-x other-window         | Move cursor to other window                 |
+---
