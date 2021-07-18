@@ -1,17 +1,16 @@
 #+TITLE: README
-* Emacs
 This is my repository to keep track of my progress in Emacs!
 
-* Run the below for stowing.
+*** Run the below for stowing.
 #+begin_src shell
 stow --ignore='^[^.].*$' emacs  # Yea, its ugly
 #+end_src
 
-* Things you can expect sometime soon
-** TODO Detailed description of init.org along with their usage
+*** Things you can expect sometime soon
+- Detailed description of init.org along with their usage
 
-* Footnotes
+*** Footnotes
 I am fairly a beginner in Emacs, so if you think, there are better ways to do/achieve some functionalities, please do let me know.
 
-And I would like to thank [David Wilson](https://github.com/daviwil) and everyone else, who inspired me to start with Emacs.
+And I would like to thank [[https://github.com/daviwil][David Wilson]] and everyone else, who inspired me to start with Emacs.
 
