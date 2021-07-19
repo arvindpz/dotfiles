@@ -20,6 +20,14 @@ M-x packages-list-packages    (for some reason, package-install doesn't list org
 search and install 'org'
 #+end_example
 
+***** fonts
+****** Cantarell
+1. Download the font from [[https://fonts.google.com/specimen/Cantarell][fonts.google.com]] and do the following
+2. Follow this [[https://support.apple.com/en-us/HT201749][support page]]. The same can be done in Ubuntu as well.
+
+****** Fira Code Retina
+1. The [[https://github.com/tonsky/FiraCode][Fira Code]] repository has awesome installation instructions for all distributions.
+
 *** Things you can expect sometime soon
   - Detailed description of Init.org along with their usage
   - Achieve plug and play
