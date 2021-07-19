@@ -1,8 +1,26 @@
-set number " Show line numbers
-set relativenumber " Show relative line numbers
+" Set line numbers
+set number
 
-syntax enable " Enable syntax processing
+" Set relative line numbers
+set relativenumber
 
-filetype indent on " Add indentation based on filetypes
-set expandtab " Replace Tabs with Space
+" Enable search as you type, without having to press Enter
+set incsearch
+set ignorecase
+" Enable highlight for search terms
+set hlsearch
 
+" Enable syntax highlighter
+syntax on
+
+" Set tab width to 2 spaces
+set tabstop=2 shiftwidth=2 expandtab
+
+" Set usual backspace behaviour
+set bs=2
+
+" Fuzzy file search
+set runtimepath+=/usr/local/opt/fzf
+
+filetype indent on      " load filetype-specific indent files
+filetype plugin on      " load filetype specific plugin files
