@@ -291,8 +291,11 @@ Check out [[https://emacsthemes.com/][emacsthemes]] or [[https://peach-melpa.org
 (use-package doom-themes
   :init (load-theme 'doom-nord t))
 
-; M-x package-install solaire-mode
-(solaire-global-mode +1)                    ; Slightly darker color for non-coding space, helpful windows, etc. 
+; Slightly darker color for non-coding space, helpful windows, etc.
+(use-package solaire-mode
+  :ensure t
+  :config
+  (solaire-global-mode +1))
 #+end_src
 
 ** Text Scaling
