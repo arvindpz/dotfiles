@@ -803,7 +803,7 @@ Provides dynamic tiling windows
     :commands (dired dired-jump)
     :bind (("C-x C-j" . dired-jump))
     :custom (
-             (insert-directory-program "ls")   ; ls in OSX can't group contents by type. Use gls from coreutils
+             (insert-directory-program "gls")   ; ls in OSX can't group contents by type. Use gls from coreutils
              (dired-use-ls-dired t)
              (dired-listing-switches "-ahlgo --group-directories-first"))
     :config
