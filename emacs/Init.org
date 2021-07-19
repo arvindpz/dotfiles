@@ -538,7 +538,7 @@ Check out [[https://emacsthemes.com/][emacsthemes]] or [[https://peach-melpa.org
 ;; Automatically tangle our Emacs.org config file when we save it
 (defun config/org-babel-tangle-config ()
   (when (string-equal (buffer-file-name)
-                      (expand-file-name "~/playground/emacs/Init.org"))
+                      (expand-file-name "~/.dotfiles/emacs/Init.org"))
     ;; org-confirm-babel-evaluate is nil only in the current scope. (when the current file is our Emacs.org)
     (let ((org-confirm-babel-evaluate nil))
       (org-babel-tangle))))
