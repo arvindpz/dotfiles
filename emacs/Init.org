@@ -210,6 +210,7 @@ However, if you use =:init=, it is going to override all the options specified a
 
 ; Collection of modes with evil-key-bindings
 (use-package evil-collection
+  :ensure t
   :after evil
   :config
   (evil-collection-init))
