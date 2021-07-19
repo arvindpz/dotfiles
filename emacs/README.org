@@ -6,8 +6,23 @@ This is my repository to keep track of my progress in Emacs!
 stow --ignore='^[^.].*$' emacs  # Yea, its ugly
 #+end_src
 
+*** Issues:/
+It is still not plug and play. Following are some of the issues you may face.
+***** gls not found
+Comment out the below line if you're not in OSX.
+#+begin_src emacs-lisp
+(insert-directory-program "ls")   ; ls in OSX can't group contents by type. Use gls from coreutils
+#+end_src
+
+***** org-tempo not found
+#+begin_example
+M-x packages-list-packages    (for some reason, package-install doesn't list org)
+search and install 'org'
+#+end_example
+
 *** Things you can expect sometime soon
-- Detailed description of init.org along with their usage
+  - Detailed description of Init.org along with their usage
+  - Achieve plug and play
 
 *** Footnotes
 I am fairly a beginner in Emacs, so if you think, there are better ways to do/achieve some functionalities, please do let me know.

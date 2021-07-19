@@ -20,6 +20,7 @@ However, if you use =:init=, it is going to override all the options specified a
 ;; Initialize package sources
 (require 'package)
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ("melpa-stable" . "http://stable.melpa.org/packages/")
                          ("org" . "https://orgmode.org/elpa/")
                          ("elpa" . "https://elpa.gnu.org/packages/")))
 
@@ -801,7 +802,8 @@ Provides dynamic tiling windows
     :ensure nil
     :commands (dired dired-jump)
     :bind (("C-x C-j" . dired-jump))
-    :custom ((insert-directory-program "gls")   ; ls in OSX can't group contents by type. Use gls from coreutils
+    :custom (
+             (insert-directory-program "ls")   ; ls in OSX can't group contents by type. Use gls from coreutils
              (dired-use-ls-dired t)
              (dired-listing-switches "-ahlgo --group-directories-first"))
     :config
