@@ -1,3 +1,6 @@
+# Ignore plugin-repos stored in ZSH_CUSTOM
+zsh/custom/plugins
+
 # Ignore the actual config file
 .emacs.d
 
