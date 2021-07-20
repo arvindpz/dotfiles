@@ -71,7 +71,19 @@ ZSH_CUSTOM="$HOME/.dotfiles/zsh/custom"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+    bundler
+    colored-man-pages
+    command-not-found
+    docker-compose
+    fzf
+    git
+    git-auto-fetch
+    rand-quote
+    ripgrep
+    ruby
+    zsh-autosuggestions
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -88,7 +100,6 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
-export EDITOR='vim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -101,3 +112,22 @@ export EDITOR='vim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+
+export EDITOR='vim'
+
+
+# Plugin Options
+#
+# fzf
+export FZF_DEFAULT_OPTS="--bind 'alt-j:down,alt-k:up' --height=50% --layout=reverse"
+
+
+# Bindkeys
+#
+# \e => Option-key, ^ => Ctrl
+
+# zsh-autosuggestions
+bindkey '\e ' autosuggest-accept
+
+[[ -f $HOME/.work.sh ]] && source $HOME/.work.sh
