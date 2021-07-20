@@ -130,4 +130,8 @@ export FZF_DEFAULT_OPTS="--bind 'alt-j:down,alt-k:up' --height=50% --layout=reve
 # zsh-autosuggestions
 bindkey '\e ' autosuggest-accept
 
+
+# Other Scripts
+source $ZSH_CUSTOM/scripts/script.sh
+
 [[ -f $HOME/.work.sh ]] && source $HOME/.work.sh

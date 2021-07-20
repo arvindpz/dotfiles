@@ -1,14 +1,7 @@
 #!/bin/bash
+# Install small tools you use.
 
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    installer="sudo apt-get install"
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-    installer="brew install"
-fi
-
-function install() {
-    eval "$installer $1"
-}
+source $ZSH_CUSTOM/scripts/script.sh
 
 for item in $@
 do
@@ -17,9 +10,9 @@ do
             clone_path=$ZSH_CUSTOM/plugins/zsh-autosuggestions
             mkdir -p $clone_path
             git clone https://github.com/zsh-users/zsh-autosuggestions "$clone_path"
-            [[ $? -eq 0 ]] && printf "\nzsh-autosuggestions cloned to $clone_path. \nPlease ensure you've the zsh-autosuggestions added to the list of plugins in your .zshrc"
+            [[ $? -eq 0 ]] && printf "\nzsh-autosuggestions cloned to $clone_path."
             ;;
-        fzf)
-            install fzf
+        fzf|ripgrep|fdclone)
+            install-pkg $item
     esac
 done
