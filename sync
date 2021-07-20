@@ -1,0 +1,24 @@
+#!/bin/sh
+
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    installer="sudo apt-get install"
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    installer="brew install"
+fi
+
+function install() {
+    eval "$installer $1"
+}
+
+for item in $@
+do
+    case "$item" in
+        zsh-autosuggestions)
+            clone_path=$ZSH_CUSTOM/plugins/zsh-autosuggestions
+            git clone https://github.com/zsh-users/zsh-autosuggestions "$clone_path"
+            [[ $? -eq 0 ]] && printf "\nzsh-autosuggestions cloned to $clone_path. \nPlease ensure you've the zsh-autosuggestions added to the list of plugins in your .zshrc"
+            ;;
+        fzf)
+            install fzf
+    esac
+done
