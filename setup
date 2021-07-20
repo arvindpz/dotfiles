@@ -1,0 +1,19 @@
+#!/bin/bash
+# First time setup
+
+source $ZSH_CUSTOM/scripts/script.sh
+
+command -v stow
+[[ $? -ne 0 ]] && install-pkg stow
+
+stow git vim zsh
+stow --ignore='^[^.].*$' emacs
+
+tools=(
+    fdclone
+    fzf
+    ripgrep
+    zsh-autosuggestions
+)
+
+echo $tools | xargs bash ./sync
