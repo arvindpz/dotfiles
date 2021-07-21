@@ -114,7 +114,17 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
+# Preferences
+#
 export EDITOR='vim'
+
+export ZDOTDIR="$HOME/.dotfiles/zsh"
+export HISTFILE=$ZDOTDIR/.zsh_history
+
+
+# Aliases
+#
+alias gpp="g++ -std=c++17"
 
 
 # Plugin Options
