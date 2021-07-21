@@ -16,4 +16,6 @@ tools=(
     zsh-autosuggestions
 )
 
-echo $tools | xargs bash ./sync
+echo ${tools[@]} | xargs bash ./sync
+
+exit
