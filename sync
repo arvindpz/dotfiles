@@ -3,16 +3,25 @@
 
 source $ZSH_CUSTOM/scripts/script.sh
 
+function log_info() {
+    echo "Syncing $item..."
+}
+
 for item in $@
 do
     case "$item" in
         zsh-autosuggestions)
+            log_info
             clone_path=$ZSH_CUSTOM/plugins/zsh-autosuggestions
             mkdir -p $clone_path
             git clone https://github.com/zsh-users/zsh-autosuggestions "$clone_path"
             [[ $? -eq 0 ]] && printf "\nzsh-autosuggestions cloned to $clone_path."
             ;;
         fzf|ripgrep|fdclone)
+            log_info
             install-pkg $item
+            ;;
     esac
 done
+
+exit
