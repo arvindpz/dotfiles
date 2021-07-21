@@ -7,15 +7,30 @@ function log_info() {
     echo "Syncing $item..."
 }
 
+function clone_plugin() {
+    # Reset name and url arguments (if any, declared outside the function scope)
+    local name url
+
+    # Copy name and url arguments
+    local "${@}"
+
+    local clone_path="$ZSH_CUSTOM/plugins/$name"
+    mkdir -p $clone_path
+
+    git clone $url "$clone_path"
+    [[ $? -eq 0 ]] && printf "\n$name cloned to $clone_path.\n"
+}
+
 for item in $@
 do
     case "$item" in
         zsh-autosuggestions)
             log_info
-            clone_path=$ZSH_CUSTOM/plugins/zsh-autosuggestions
-            mkdir -p $clone_path
-            git clone https://github.com/zsh-users/zsh-autosuggestions "$clone_path"
-            [[ $? -eq 0 ]] && printf "\nzsh-autosuggestions cloned to $clone_path."
+            clone_plugin name=$item url="https://github.com/zsh-users/zsh-autosuggestions"
+            ;;
+        zsh-syntax-highlighting)
+            log_info
+            clone_plugin name=$item url="https://github.com/zsh-users/zsh-syntax-highlighting.git"
             ;;
         fzf|ripgrep|fdclone)
             log_info

@@ -16,13 +16,14 @@ tools=(
 
 echo ${tools[@]} | xargs stow -Rv
 
-cmds=(
-    fdclone
+kutty_tools=(
+    fdclone # fd
     fzf
     ripgrep
     zsh-autosuggestions
+    zsh-syntax-highlighting
 )
 
-echo ${cmds[@]} | xargs bash ./sync
+echo ${kutty_tools[@]} | xargs bash ./sync
 
 exit
