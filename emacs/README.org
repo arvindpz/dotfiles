@@ -1,4 +1,4 @@
-#+TITLE: README
+#+TITLE: Emacs
 This is my repository to keep track of my progress in Emacs!
 
 *** Issues :/
