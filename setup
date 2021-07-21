@@ -6,16 +6,23 @@ source $ZSH_CUSTOM/scripts/script.sh
 command -v stow
 [[ $? -ne 0 ]] && install-pkg stow
 
-stow git vim zsh
-stow --ignore='^[^.].*$' emacs
-
 tools=(
+    # bash
+    emacs
+    git
+    vim
+    zsh
+)
+
+echo ${tools[@]} | xargs stow -Rv
+
+cmds=(
     fdclone
     fzf
     ripgrep
     zsh-autosuggestions
 )
 
-echo ${tools[@]} | xargs bash ./sync
+echo ${cmds[@]} | xargs bash ./sync
 
 exit

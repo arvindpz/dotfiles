@@ -1,11 +1,6 @@
 #+TITLE: README
 This is my repository to keep track of my progress in Emacs!
 
-*** Run the below for stowing.
-#+begin_src shell
-stow --ignore='^[^.].*$' emacs  # Yea, its ugly
-#+end_src
-
 *** Issues:/
 It is still not plug and play. Following are some of the issues you may face.
 ***** gls not found
