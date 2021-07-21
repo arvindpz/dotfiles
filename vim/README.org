@@ -1,0 +1,6 @@
+#+TITLE: Vim
+
+Although I use emacs as my daily driver, I do enjoy using vim for its speed.
+It's readily available in most systems and infact, vim-keys are all over my configs as well:)
+
+You won't be running into any issues with this configuration.

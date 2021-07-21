@@ -1,0 +1,9 @@
+#+TITLE: ZSH
+
+Install [[https://github.com/ohmyzsh/ohmyzsh][oh-my-zsh]] before configuring...
+
+You may want to update the ~sync~ and ~setup~ scripts if you come across some tool that you're going to use every now and then.
+
+I have only included a handful of tools which I remember.
+
+I will try to add more eventually.

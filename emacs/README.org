@@ -1,7 +1,7 @@
 #+TITLE: README
 This is my repository to keep track of my progress in Emacs!
 
-*** Issues:/
+*** Issues :/
 It is still not plug and play. Following are some of the issues you may face.
 ***** gls not found
 Comment out the below line if you're not in OSX.
@@ -25,10 +25,12 @@ search and install 'org'
 
 *** Things you can expect sometime soon
   - Detailed description of Init.org along with their usage
-  - Achieve plug and play
+  - Achieve plug and play (atleast except for fonts)
 
-*** Footnotes
-I am fairly a beginner in Emacs, so if you think, there are better ways to do/achieve some functionalities, please do let me know.
+*** Thanks
+I am fairly a beginner in Emacs, so if you think, there are better ways to achieve some functionalities, please do let me know.
 
-And I would like to thank [[https://github.com/daviwil][David Wilson]] and everyone else, who inspired me to start with Emacs.
+I started with Emacs by following [[https://github.com/daviwil][David Wilson]].
+A decent amount of my emacs configuration is taken from his [[https://github.com/daviwil/emacs-from-scratch][emacs-from-scratch]] repository.
+And I would like to thank everyone who helped me get started with Emacs.
 
