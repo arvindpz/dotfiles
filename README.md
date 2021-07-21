@@ -39,4 +39,12 @@ The same holds true for emacs or zsh or any other thing.
 
 I will add it sometime later. In the meanwhile, you will have to do some tinkering yourself:)
 
+##### P.S.
+
+I have tested this to some extent in Ubuntu 20.04 and Catalina - both had some level of configuration prior I started working on this.
+
+I am yet to test it out in a plain device. You may face some issues.
+
+Use it at your own risk ;)
+
 **Happy hacking**
