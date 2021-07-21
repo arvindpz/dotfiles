@@ -140,6 +140,10 @@ export FZF_DEFAULT_OPTS="--bind 'alt-j:down,alt-k:up' --height=50% --layout=reve
 # zsh-autosuggestions
 bindkey '\e ' autosuggest-accept
 
+# edit current command line in vim using ^v
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^v' edit-command-line
+
 
 # Other Scripts
 source $ZSH_CUSTOM/scripts/script.sh
