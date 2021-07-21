@@ -1,8 +1,8 @@
-# Ignore plugin-repos stored in ZSH_CUSTOM
+# ZSH
 zsh/custom/plugins
+zsh/.zcompdump*
+zsh/.zsh_history
 
-# Ignore the actual config file
+# Emacs
 .emacs.d
-
-# Ignore org_files
 emacs/org_files
