@@ -40,7 +40,7 @@ However, if you use =:init=, it is going to override all the options specified a
 
 ** Startup
 #+begin_src emacs-lisp
-(setq-local garbage-collection/startup-size (* 50 1000 1000))    ; 20 MB
+(setq-local garbage-collection/startup-size (* 50 1000 1000))    ; 50 MB
 (setq-local garbage-collection/runtime-size (* 2 1000 1000))     ;  2 MB
 
 (setq gc-cons-threshold garbage-collection/startup-size)
@@ -575,8 +575,8 @@ Tabs may not be of the displayed in the same manner for different users/editors.
   ;; NOTE: Set this to the folder where you keep your Git repos!
   (when (file-directory-p "~/playground")
     (setq projectile-project-search-path '("~/playground")))
-  (when (file-directory-p "~/freshdesk/fd-k8s")
-    (setq projectile-project-search-path '("~/freshdesk/fd-k8s")))
+  (when (file-directory-p "~/work")
+    (setq projectile-project-search-path '("~/work")))
   (setq projectile-switch-project-action #'projectile-dired))
 
 ;; Installed below package mainly for ripgrep; Unfortunately our system variables are not defined in proper places and they're not available in Emacs.
