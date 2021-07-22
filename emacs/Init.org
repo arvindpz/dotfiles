@@ -81,9 +81,11 @@ However, if you use =:init=, it is going to override all the options specified a
 
 *** Ivy
 **** Keybindings
-| key   | action             |
-|-------+--------------------|
-| =C-M-j= | ivy-immediate-done |
+| key   | action                                 |
+|-------+----------------------------------------|
+| =C-M-j= | ivy-immediate-done                     |
+| =M-o i= | ivy-copy-candidate-and-paste-in-buffer |
+| =M-o y= | ivy-copy-candidate-to-clipboard        |
 **** Configuration
 #+begin_src emacs-lisp
 (use-package ivy
@@ -101,7 +103,23 @@ However, if you use =:init=, it is going to override all the options specified a
          :map ivy-reverse-i-search-map
          ("C-k" . ivy-previous-line)
          ("C-d" . ivy-reverse-i-search-kill))
+  :custom
+  (ivy-count-format "%d/%d: ")
+  (ivy-height 15)
   :config
+  (defun ivy-yank-action (x)
+    (kill-new x))
+  (defun ivy-copy-to-buffer-action (x)
+    (with-ivy-window
+      (insert x)))
+
+  ;; M-o y - copy current ivy candidate to clipboard
+  ;; M-o i - copy and paste current ivy candidate to current buffer
+  (ivy-set-actions
+  t
+  '(("i" ivy-copy-to-buffer-action "insert")
+    ("y" ivy-yank-action "yank")))
+
   (ivy-mode 1))
 
 ; Display a short description of the command while searching
@@ -115,8 +133,11 @@ However, if you use =:init=, it is going to override all the options specified a
 #+begin_src emacs-lisp
 (use-package counsel
   :bind (("M-x" . counsel-M-x)
-         ("C-x b" . counsel-ibuffer)
+         ("C-x b" . counsel-switch-buffer)
+         ("C-x B" . counsel-switch-buffer-other-window)
          ("C-x C-f" . counsel-find-file)
+         ("C-M-s" . counsel-rg)
+         ("C-M-f" . counsel-fzf)
          :map minibuffer-local-map
          ("C-r" . 'counsel-minibuffer-history))
   :config
