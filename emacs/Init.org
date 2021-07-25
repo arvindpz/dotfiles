@@ -280,10 +280,10 @@ However, if you use =:init=, it is going to override all the options specified a
 ** Font Configuration
 #+begin_src emacs-lisp
 ;; Set font
-(set-face-attribute 'default nil :font "Fira Code Retina" :height 220 :weight 'light)
+(set-face-attribute 'default nil :font "Fira Code" :foundry "Retina" :height 220 :weight 'normal)
 
 ;; Set the fixed pitch face
-(set-face-attribute 'fixed-pitch nil :font "Fira Code Retina" :height 200 :weight 'semilight)
+(set-face-attribute 'fixed-pitch nil :font "Fira Code" :foundry "Retina" :height 200 :weight 'light)
 
 ;; Set the variable pitch face
 (set-face-attribute 'variable-pitch nil :font "Cantarell" :height 295 :weight 'regular)
