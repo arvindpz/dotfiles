@@ -258,8 +258,8 @@ However, if you use =:init=, it is going to override all the options specified a
 ;; (setq visible-bell t)    ; Turn off the alarm-bell
 
 ;; Favour opening of pop-ups vertically, Not working as expected always. Fix Edwina
-(setq split-height-threshold nil)
-(setq split-width-threshold 0)
+;; (setq split-height-threshold nil)
+;; (setq split-width-threshold 0)
 #+end_src
 
 ** Line Numbers
@@ -358,7 +358,7 @@ Check out [[https://emacsthemes.com/][emacsthemes]] or [[https://peach-melpa.org
 
 ** Org-Font-Setup
 #+begin_src emacs-lisp
-;; Genetal Note: Pressing C-M-q on a parent '(' brace will format all its contents in Lisp
+;; General Note: Pressing C-M-q on a parent '(' brace will format all its contents in Lisp
 (defun writer/org-font-setup ()
   (dolist (face '((org-level-1 . 1.2)
                   (org-level-2 . 1.1)
@@ -557,11 +557,11 @@ Check out [[https://emacsthemes.com/][emacsthemes]] or [[https://peach-melpa.org
 
 *** Auto Tangle Configuration Files
 #+begin_src emacs-lisp
-;; Automatically tangle our Emacs.org config file when we save it
+;; Automatically tangle our Init.org config file when we save it
 (defun config/org-babel-tangle-config ()
   (when (string-equal (buffer-file-name)
                       (expand-file-name "~/.dotfiles/emacs/Init.org"))
-    ;; org-confirm-babel-evaluate is nil only in the current scope. (when the current file is our Emacs.org)
+    ;; org-confirm-babel-evaluate is nil only in the current scope. (when the current file is our Init.org)
     (let ((org-confirm-babel-evaluate nil))
       (org-babel-tangle))))
 
