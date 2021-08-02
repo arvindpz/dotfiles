@@ -427,9 +427,9 @@ Check out [[https://emacsthemes.com/][emacsthemes]] or [[https://peach-melpa.org
 
   ; List of Files that can show up in Agenda
   (org-agenda-files
-   '("~/playground/emacs/org_files/Tasks.org"
-     "~/playground/emacs/org_files/Habits.org"
-     "~/playground/emacs/org_files/Birthdays.org"))
+   '("~/playground/Org-Files/Tasks.org"
+     "~/playground/Org-Files/Habits.org"
+     "~/playground/Org-Files/Birthdays.org"))
 
   ;; Move "Done" items to an Archive file
   (org-refile-targets
@@ -503,28 +503,28 @@ Check out [[https://emacsthemes.com/][emacsthemes]] or [[https://peach-melpa.org
   ;; C-SPC tc is binded to org-capture in rune/leader-keys
   (org-capture-templates
    `(("t" "Tasks")
-     ("tt" "Task" entry (file+olp "~/playground/emacs/org_files/Tasks.org" "Inbox") ; file+olp => file path + heading in file
+     ("tt" "Task" entry (file+olp "~/playground/Org-Files/Tasks.org" "Inbox") ; file+olp => file path + heading in file
       "* TODO %?\n  %U\n  %a\n  %i" :empty-lines 1) ; How to format the entry
 
      ("j" "Journal Entries")
      ("jj" "Journal" entry
-      (file+olp+datetree "~/playground/emacs/org_files/Journal.org")
+      (file+olp+datetree "~/playground/Org-Files/Journal.org")
       "\n* %<%I:%M %p> - Journal :journal:\n\n%?\n\n"
       :clock-in :clock-resume
       :empty-lines 1)
 
      ("jm" "Meeting" entry
-      (file+olp+datetree "~/playground/emacs/org_files/Journal.org")
+      (file+olp+datetree "~/playground/Org-Files/Journal.org")
       "* %<%I:%M %p> - %a :meetings:\n\n%?\n\n"
       :clock-in :clock-resume
       :empty-lines 1)
 
      ("w" "Workflows")
-     ("we" "Checking Email" entry (file+olp+datetree "~/playground/emacs/org_files/Journal.org")
+     ("we" "Checking Email" entry (file+olp+datetree "~/playground/Org-Files/Journal.org")
       "* Checking Email :email:\n\n%?" :clock-in :clock-resume :empty-lines 1)
 
      ("m" "Metrics Capture")
-     ("mw" "Weight" table-line (file+headline "~/playground/emacs/org_files/Metrics.org" "Weight")
+     ("mw" "Weight" table-line (file+headline "~/playground/Org-Files/Metrics.org" "Weight")
       "| %U | %^{Weight} | %^{Notes} |" :kill-buffer t)))
 )
 #+end_src
