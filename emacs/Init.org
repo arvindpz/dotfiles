@@ -424,6 +424,7 @@ Check out [[https://emacsthemes.com/][emacsthemes]] or [[https://peach-melpa.org
   (org-log-done 'time)                   ; Log the finish time of TODOS
   (org-log-into-drawer t)
   (org-habit-graph-column 60)            ; Increase the width of the graph
+  (org-clock-sound "~/.dotfiles/emacs/timer_bell.mp3")
 
   ; List of Files that can show up in Agenda
   (org-agenda-files
