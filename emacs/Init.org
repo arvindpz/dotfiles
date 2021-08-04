@@ -507,6 +507,7 @@ Check out [[https://emacsthemes.com/][emacsthemes]] or [[https://peach-melpa.org
      ; file+olp => file path + heading in file
      ("tt" "Task" entry (file+olp "~/playground/Org-Files/Tasks.org" "Inbox")
       "* TODO %?\n  %U\n  %a\n  %i" :empty-lines 1) ; How to format the entry
+      ;; %? - Cursor Position in the template, %U - Timestamp, %a - Annotation; More in docs:)
 
      ("j" "Journal Entries")
      ("jj" "Journal" entry
@@ -566,6 +567,8 @@ Works in org-mode
 #+begin_src emacs-lisp
 ;; Save Org buffers after refiling!
 (advice-add 'org-refile :after 'org-save-all-org-buffers)
+;; INcase you get some errors, try one more time
+;; (advice-remove 'org-refile 'org-save-all-org-buffers)
 #+end_src
 
 *** Auto Tangle Configuration Files
