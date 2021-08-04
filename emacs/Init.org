@@ -204,8 +204,10 @@ However, if you use =:init=, it is going to override all the options specified a
     :global-prefix "C-SPC")
 
   (rune/leader-keys
-    "t"  '(:ignore t :which-key "toggles")
-    "tt" '(counsel-load-theme :which-key "choose theme")))
+    "f"  '(:ignore t :which-key "find")
+    "fc" '((lambda () (interactive) (find-file "~/.dotfiles/emacs/Init.org")) :which-key "emacs config")
+    "fp" '((lambda () (interactive) (find-file "~/playground")) :which-key "playground")
+    "ft" '(counsel-load-theme :which-key "choose theme")))
 #+end_src
 
 ** Evil Keys
@@ -241,7 +243,9 @@ However, if you use =:init=, it is going to override all the options specified a
 ** Org Keys
 #+begin_src emacs-lisp
 (rune/leader-keys
- "tc" '(org-capture :which-key "capture template"))
+ "a"  '(:ignore t :which-key "agenda")
+ "at" '(org-capture :which-key "capture template")
+ "aa" '(org-agenda :which-key "agenda"))
 #+end_src
 
 * General Configuration
@@ -536,6 +540,9 @@ Check out [[https://emacsthemes.com/][emacsthemes]] or [[https://peach-melpa.org
 | C-c C-x C-x | Resume clock of last clocked in item |
 | C-c C-x C-i | Start clock time                     |
 | C-c C-x C-o | Stop clock time                      |
+| C-c C-q     | Select Tag for the current TODO      |
+| C-c C-t     | Select Status for the current TODO   |
+| C-c C-o     | Open Link at point                   |
 
 *** Pomodoro Timer
 Works in org-mode
