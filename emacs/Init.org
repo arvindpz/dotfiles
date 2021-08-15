@@ -400,14 +400,27 @@ Check out [[https://emacsthemes.com/][emacsthemes]] or [[https://peach-melpa.org
 
 ** Org-Structure-Templates-Setup
 #+begin_src emacs-lisp
-;; Add shortcuts to insert commonly used codeblocks
-;; Type <py + TAB to insert a python code block in org-mode
-(defun writer/org-structure-templates-setup ()
-  (dolist (hotkey '(("el" . "src emacs-lisp")
-                    ("py" . "src python")
-		       ("rb" . "src ruby")
-		       ("sh" . "src shell")))
-    (add-to-list 'org-structure-template-alist hotkey)))
+  ;; Add shortcuts to insert commonly used codeblocks
+  ;; Type <py + TAB to insert a python code block in org-mode
+  (defun writer/org-structure-templates-setup ()
+    (dolist (hotkey '(("el" . "src emacs-lisp")
+                      ("py" . "src python")
+                      ("rb" . "src ruby")
+                      ("sh" . "src shell")))
+      (add-to-list 'org-structure-template-alist hotkey))
+
+    (add-to-list 'org-structure-template-alist '
+                 ("oh" .  ;; Org-Head
+                  "src org
+        ,#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+        ,#+STARTUP: inlineimages
+        ,#+HTML_LINK_UP: ./sitemap.html
+        ,#+HTML_LINK_HOME: file:///home/aravindhan/playground/Second-Brain/Blog/sitemap.html
+        ,#+INFOJS_OPT: path:assets/org-info.js
+        ,#+INFOJS_OPT: toc:nil ltoc:t view:info mouse:underline buttons:nil
+        ,#+TITLE:"
+                  ))
+    )
 #+end_src
 
 ** Org
