@@ -344,10 +344,11 @@ Check out [[https://emacsthemes.com/][emacsthemes]] or [[https://peach-melpa.org
 * Org Mode
 ** Org-Modules
 #+begin_src emacs-lisp
-(with-eval-after-load 'org     ; Default way of defering execution of a code block until a package is loaded
-  (require 'org-habit)
-  (require 'org-tempo)
-  (add-to-list 'org-modules 'org-habit 'org-tempo))
+  (with-eval-after-load 'org     ; Default way of defering execution of a code block until a package is loaded
+    (require 'org-habit)
+    (require 'org-tempo)
+    (require 'ox-publish)
+    (add-to-list 'org-modules 'org-habit 'org-tempo))
 #+end_src
 
 ** Org-Setup
@@ -569,12 +570,41 @@ Works in org-mode
      (ruby . t))))
 #+end_src
 
+** Org-Publishing
+#+begin_src emacs-lisp
+(setq org-publish-project-alist
+      '(
+        ;; ... all the components ...
+        ("Second-Brain"
+         :base-directory "~/playground/Second-Brain/"
+         :base-extension "org"
+         :publishing-directory "~/playground/Second-Brain/Blog/"
+         :exclude "Blog"
+         :recursive t
+         :publishing-function org-html-publish-to-html
+         :auto-preamble t
+         :auto-sitemap t                  ; Generate sitemap.org automagically...
+         :sitemap-filename "sitemap.org"  ; ... call it sitemap.org (it's the default)...
+         :sitemap-title "Sitemap"         ; ... with title 'Sitemap'.
+         )
+
+        ("org-attachments"
+         :base-directory "~/playground/Second-Brain/"
+         :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+         :publishing-directory "~/playground/Second-Brain/"
+         :recursive t
+         :publishing-function org-publish-attachment
+         )
+
+        ("org" :components ("Second-Brain" "org-attachments"))
+        ))
+#+end_src
 ** Org-Automations
 *** Auto Write Buffers After Refiling
 #+begin_src emacs-lisp
 ;; Save Org buffers after refiling!
 (advice-add 'org-refile :after 'org-save-all-org-buffers)
-;; INcase you get some errors, try one more time
+;; Incase you get some errors, try one more time
 ;; (advice-remove 'org-refile 'org-save-all-org-buffers)
 #+end_src
 
