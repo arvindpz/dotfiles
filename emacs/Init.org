@@ -555,6 +555,7 @@ Check out [[https://emacsthemes.com/][emacsthemes]] or [[https://peach-melpa.org
 | C-c C-x C-i | Start clock time                     |
 | C-c C-x C-o | Stop clock time                      |
 | C-c C-q     | Select Tag for the current TODO      |
+| C-c C-s     | Schedule a task                      |
 | C-c C-t     | Select Status for the current TODO   |
 | C-c C-o     | Open Link at point                   |
 
@@ -612,6 +613,7 @@ Works in org-mode
         ("org" :components ("Second-Brain" "org-attachments"))
         ))
 #+end_src
+
 ** Org-Automations
 *** Auto Write Buffers After Refiling
 #+begin_src emacs-lisp
