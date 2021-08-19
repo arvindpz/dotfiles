@@ -586,6 +586,11 @@ Works in org-mode
 
 ** Org-Publishing
 #+begin_src emacs-lisp
+;; Add Syntax Highlighting to Code Blocks in Exported HTMLs
+(use-package htmlize
+  :ensure t
+  :after org)
+
 (setq org-publish-project-alist
       '(
         ;; ... all the components ...
