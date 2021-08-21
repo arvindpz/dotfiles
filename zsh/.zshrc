@@ -71,3 +71,4 @@ bindkey -M menuselect '^j' vi-down-line-or-history
 source $ZSH_CUSTOM/scripts/script.sh
 
 [[ -f $HOME/.work.sh ]] && source $HOME/.work.sh
+alias tsh="source /usr/local/bin/tsh $*"

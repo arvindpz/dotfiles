@@ -406,7 +406,9 @@ Check out [[https://emacsthemes.com/][emacsthemes]] or [[https://peach-melpa.org
     (dolist (hotkey '(("el" . "src emacs-lisp")
                       ("py" . "src python")
                       ("rb" . "src ruby")
-                      ("sh" . "src shell")))
+                      ("sh" . "src shell")
+                      ("cc" . "src C")
+                      ("cp" . "src C++")))
       (add-to-list 'org-structure-template-alist hotkey))
 
     (add-to-list 'org-structure-template-alist '
