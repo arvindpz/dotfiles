@@ -284,13 +284,13 @@ However, if you use =:init=, it is going to override all the options specified a
 ** Font Configuration
 #+begin_src emacs-lisp
   ;; Set font
-  (set-face-attribute 'default nil :font "Fira Code" :foundry "Retina" :height 220 :weight 'normal)
+  (set-face-attribute 'default nil :font "Fira Code" :foundry "Retina" :height 150 :weight 'normal)
 
   ;; Set the fixed pitch face
-  (set-face-attribute 'fixed-pitch nil :font "Fira Code" :foundry "Retina" :height 200 :weight 'light)
+  (set-face-attribute 'fixed-pitch nil :font "Fira Code" :foundry "Retina" :height 140 :weight 'light)
 
   ;; Set the variable pitch face
-  (set-face-attribute 'variable-pitch nil :font "Cantarell" :height 295 :weight 'regular)
+  (set-face-attribute 'variable-pitch nil :font "Cantarell" :height 195 :weight 'regular)
 #+end_src
 
 ** UI Configuration
@@ -390,7 +390,7 @@ Check out [[https://emacsthemes.com/][emacsthemes]] or [[https://peach-melpa.org
 #+begin_src emacs-lisp
   ;; Center Org file contents insteaad of having them at the left end
   (defun writer/org-mode-visual-fill ()
-    (setq visual-fill-column-width 100
+    (setq visual-fill-column-width 120
           visual-fill-column-center-text t)
     (visual-fill-column-mode 1))
 
