@@ -751,8 +751,19 @@ Autocompletions!
     (company-minimum-prefix-length 1)
     (company-idle-delay 0.0))
 
-  (use-package company-box                                  ; A little aesthetic enhancement for company mode
-    :hook (company-mode . company-box-mode))
+  ;; Company box didn't work in Ubuntu:/
+  ;; However, company-posframe works:)
+  (use-package company-posframe
+    :ensure t
+  :custom
+  (company-posframe-show-metadata nil)
+  (company-posframe-show-indicator nil)
+  :config
+  (company-posframe-mode +1))
+
+  ;; (use-package company-box                                  ; A little aesthetic enhancement for company mode
+  ;;   :ensure t
+  ;;   :hook (company-mode . company-box-mode))
 #+end_src
 
 *** Languages
