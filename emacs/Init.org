@@ -1,5 +1,5 @@
 #+TITLE: Emacs Configuration
-#+PROPERTY: header-args:emacs-lisp :tangle ~/.dotfiles/emacs/.emacs.d/init.el 
+#+PROPERTY: header-args:emacs-lisp :tangle ~/.dotfiles/emacs/.emacs.d/init.el
 
 * Packages
 ** Setup
@@ -659,28 +659,29 @@ Tabs may not be displayed in the same manner for different users/editors. Use ~S
 
 ** Projectile
 #+begin_src emacs-lisp
-                                          ; Should revisit this to understand better
-                                          ; Can control how to build or run a project, run tests, etc.
-  (use-package projectile
-    :diminish projectile-mode
-    :config (projectile-mode)
-    :custom ((projectile-completion-system 'ivy))
-    :bind-keymap
-    ("C-c p" . projectile-command-map)
-    :init
-    ;; NOTE: Set this to the folder where you keep your Git repos!
-    (when (file-directory-p "~/playground")
-      (setq projectile-project-search-path '("~/playground")))
-    (when (file-directory-p "~/work")
-      (setq projectile-project-search-path '("~/work")))
-    (setq projectile-switch-project-action #'projectile-dired))
+                                            ; Should revisit this to understand better
+                                            ; Can control how to build or run a project, run tests, etc.
+    (use-package projectile
+      :diminish projectile-mode
+      :config (projectile-mode)
+      :custom ((projectile-completion-system 'ivy))
+      :bind-keymap
+      ("C-c p" . projectile-command-map)
+      :init
+      ;; NOTE: Set this to the folder where you keep your Git repos!
+      (when (file-directory-p "~/playground")
+        (setq projectile-project-search-path '("~/playground")))
+      (when (file-directory-p "~/work")
+        (setq projectile-project-search-path '("~/work")))
+      (setq projectile-switch-project-action #'projectile-dired))
 
-  ;; Installed below package mainly for ripgrep; Unfortunately our system variables are not defined in proper places and they're not available in Emacs.
-  ;; Workaround - Start emacs from terminal so that your terminal path will inherited in your Emacs path
-  ;; C-c C-o (ivy-occur) saves search results to a buffer
-  (use-package counsel-projectile
-    :after projectile
-    :config (counsel-projectile-mode))
+    ;; Installed below package mainly for ripgrep;
+    ;; Unfortunately our system variables are not defined in proper places and they're not available in Emacs.
+    ;; Workaround - Start emacs from terminal so that your terminal path will inherited in your Emacs path
+    ;; C-c C-o (ivy-occur) saves search results to a buffer
+    (use-package counsel-projectile
+      :after projectile
+      :config (counsel-projectile-mode))
 #+end_src
 
 ** Magit
