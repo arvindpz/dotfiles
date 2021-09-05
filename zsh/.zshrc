@@ -40,7 +40,7 @@ export HISTFILE=$ZDOTDIR/.zsh_history
 
 # Aliases
 #
-alias gpp="g++ -std=c++17"
+alias gpp="g++ -std=c++17 -Wall"
 
 
 # Plugin Options
