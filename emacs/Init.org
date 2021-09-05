@@ -755,11 +755,10 @@ Autocompletions!
   ;; However, company-posframe works:)
   (use-package company-posframe
     :ensure t
-  :custom
-  (company-posframe-show-metadata nil)
-  (company-posframe-show-indicator nil)
-  :config
-  (company-posframe-mode +1))
+    :custom
+    (company-posframe-show-metadata nil)
+    (company-posframe-show-indicator nil)
+    :hook (company-mode . company-posframe-mode))
 
   ;; (use-package company-box                                  ; A little aesthetic enhancement for company mode
   ;;   :ensure t
