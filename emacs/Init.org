@@ -304,8 +304,8 @@ However, if you use =:init=, it is going to override all the options specified a
 
   (use-package all-the-icons)                  ; Icons in Modeline
 
-                                          ; (use-package hide-mode-line)                 ; Hide Modeline
-                                          ; Trying to hide Modeline in org-todo, org-agenda and org-tags popup. Not able to do it, YET
+  ;; (use-package hide-mode-line)                 ; Hide Modeline
+  ;; Trying to hide Modeline in org-todo, org-agenda and org-tags popup. Not able to do it, YET
 
   (use-package doom-modeline
     :init (doom-modeline-mode 1)
