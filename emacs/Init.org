@@ -310,6 +310,9 @@ However, if you use =:init=, it is going to override all the options specified a
   (use-package doom-modeline
     :init (doom-modeline-mode 1)
     :custom ((doom-modeline-height 15)))
+
+  ;; Display time in modeline
+  (display-time)
 #+end_src
 
 *** Themes
