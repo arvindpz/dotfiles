@@ -482,7 +482,7 @@ Check out [[https://emacsthemes.com/][emacsthemes]] or [[https://peach-melpa.org
     ;; C-c C-t toggles org-todo
     (org-todo-keywords
      '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!)")
-       (sequence "OPEN(o)" "IN PROGRESS(p)" "REVIEW(r)" "TESTING(t)" "WAIT(w@/!)" "|" "COMPLETED(c)")))
+       (sequence "OPEN(O)" "IN PROGRESS(P)" "REVIEW(R)" "TESTING(T)" "WAIT(W@/!)" "|" "COMPLETED(C)")))
 
     (org-agenda-custom-commands
      '(("d" "Dashboard"
