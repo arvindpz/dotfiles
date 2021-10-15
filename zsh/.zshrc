@@ -70,5 +70,8 @@ bindkey -M menuselect '^j' vi-down-line-or-history
 # some other scripts
 source $ZSH_CUSTOM/scripts/script.sh
 
+# Reference: https://kubernetes.io/docs/tasks/tools/included/optional-kubectl-configs-zsh/
+source <(kubectl completion zsh)
+
 [[ -f $HOME/.work.sh ]] && source $HOME/.work.sh
 alias tsh="source /usr/local/bin/tsh $*"

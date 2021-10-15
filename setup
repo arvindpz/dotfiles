@@ -17,6 +17,7 @@ tools=(
 echo ${tools[@]} | xargs stow -Rv
 
 kutty_tools=(
+    bash-completion
     fdclone # fd
     fzf
     ripgrep
