@@ -12,7 +12,6 @@ ZSH_THEME="custom-af-magic"
 
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    bundler
     colored-man-pages
     command-not-found
     docker-compose
@@ -37,7 +36,6 @@ export EDITOR='vim'
 export ZDOTDIR="$HOME/.dotfiles/zsh"
 export HISTFILE=$ZDOTDIR/.zsh_history
 
-
 # Aliases
 #
 alias gpp="g++ -std=c++17 -Wall"
@@ -46,8 +44,22 @@ alias gpp="g++ -std=c++17 -Wall"
 # Plugin Options
 #
 # fzf
-export FZF_DEFAULT_OPTS="--bind 'alt-j:down,alt-k:up' --height=50% --layout=reverse"
+# can be invoked by C-t, M-c, C-r
+export FZF_DEFAULT_OPTS="--bind 'alt-j:down,alt-k:up'
+                         --height=60%
+                         --layout=reverse
+                         --preview 'bat --style=numbers --color=always --line-range :50 {}'"
 
+# Press C-t to start fzf in current tree, and then
+# Press C-d or C-f to toggle between Directories and Files
+export FZF_CTRL_T_OPTS="--bind 'ctrl-d:change-prompt(Directories> )+reload(find * -type d)'
+                        --bind 'ctrl-f:change-prompt(Files> )+reload(find * -type f)'
+                        --bind 'ctrl-t:change-prompt(> )+reload(find *)'"
+# zsh-autosuggestions
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
+# bat
+export BAT_THEME="OneHalfDark"
 
 # Bindkeys
 #
