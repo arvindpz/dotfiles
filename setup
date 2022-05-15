@@ -23,6 +23,7 @@ kutty_tools=(
     ripgrep
     zsh-autosuggestions
     zsh-syntax-highlighting
+    bat
 )
 
 echo ${kutty_tools[@]} | xargs bash ./sync

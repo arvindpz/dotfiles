@@ -32,7 +32,7 @@ do
             log_info
             clone_plugin name=$item url="https://github.com/zsh-users/zsh-syntax-highlighting.git"
             ;;
-        fzf|ripgrep|fdclone|bash-completion)
+        *)
             log_info
             install-pkg $item
             ;;
