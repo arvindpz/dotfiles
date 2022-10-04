@@ -87,6 +87,11 @@ bindkey -M menuselect '^j' vi-down-line-or-history
 source $ZSH_CUSTOM/scripts/script.sh
 
 # Reference: https://kubernetes.io/docs/tasks/tools/included/optional-kubectl-configs-zsh/
-source <(kubectl completion zsh)
+# source <(kubectl completion zsh)
+#
+# complete -F __start_kubectl tsh
+
+# autoload -Uz compinit
+# compinit
 
 [[ -f $HOME/.work.sh ]] && source $HOME/.work.sh
