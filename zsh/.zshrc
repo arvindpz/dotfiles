@@ -90,4 +90,3 @@ source $ZSH_CUSTOM/scripts/script.sh
 source <(kubectl completion zsh)
 
 [[ -f $HOME/.work.sh ]] && source $HOME/.work.sh
-alias tsh="source /usr/local/bin/tsh $*"
