@@ -410,6 +410,7 @@ Check out [[https://emacsthemes.com/][emacsthemes]] or [[https://peach-melpa.org
                       ("py" . "src python")
                       ("rb" . "src ruby")
                       ("sh" . "src shell")
+                      ("jj" . "src java")
                       ("cc" . "src C")
                       ("cp" . "src C++")))
       (add-to-list 'org-structure-template-alist hotkey))
