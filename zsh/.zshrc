@@ -20,7 +20,6 @@ plugins=(
     git-auto-fetch
     rand-quote
     ripgrep
-    ruby
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
@@ -39,6 +38,8 @@ export HISTFILE=$ZDOTDIR/.zsh_history
 # Aliases
 #
 alias gpp="g++ -std=c++17 -Wall"
+
+alias rb="ruby"
 
 
 # Plugin Options
