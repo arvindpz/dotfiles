@@ -24,6 +24,9 @@ plugins=(
     zsh-syntax-highlighting
 )
 
+# Checking for updates significantly increases terminal startup time; Run `omz update` yourself once in a while
+DISABLE_AUTO_UPDATE=true
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
