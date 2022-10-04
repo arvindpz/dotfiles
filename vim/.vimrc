@@ -1,3 +1,6 @@
+" Vim need not be compatible with Vi
+set nocompatible
+
 " Set line numbers
 set number
 
@@ -22,5 +25,6 @@ set bs=2
 " Fuzzy file search
 set runtimepath+=/usr/local/opt/fzf
 
+filetype on             " enable filetype detection
 filetype indent on      " load filetype-specific indent files
 filetype plugin on      " load filetype specific plugin files
