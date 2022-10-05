@@ -816,6 +816,54 @@ I might have to revisit this:)
   (add-hook 'c++-mode-hook 'my-c-mode-hook)
 #+end_src
 
+**** Python
+***** Elpy
+#+begin_src emacs-lisp
+  (use-package elpy
+    :ensure t
+    :defer t
+    :init
+    (advice-add 'python-mode :before 'elpy-enable))
+#+end_src
+
+Elpy can be configured using ~M-x elpy-config~
+****** TODO Automatically set venv
+While setting this up, I had created a created a virtualenv and set that as default for all the projects in ~elpy-config~.
+
+We have to run ~M-x py venv-activate~ and choose the virtual environment for some specific project.
+Is it possible to set the virtual environment using ~M-x add-dir-local-variable~, so that on starting pyvenv, the correct virtual envirnonment is set automatically?
+
+****** Keybindings
+This had some nice keybindings by default
+| key                  | action                                                   |
+|----------------------+----------------------------------------------------------|
+| C-c C-c              | Run the current buffer in IPython and display the output |
+| C-RET                | Run the current line + nested lines in IPython           |
+| C-c C-d              | Display the docstring of the method in a window          |
+| C-c C-z              | Toggle between the Python script and IPython window      |
+| C-c M-o              | Clear the IPython buffer                                 |
+|----------------------+----------------------------------------------------------|
+| M-x elpy-format-code | Format code in the buffer or selected region             |
+
+****** Related links
+1. https://elpy.readthedocs.io/en/latest/
+2. https://github.com/jorgenschaefer/elpy
+***** Pylsp
+The goto definitions did not work properly with the Elpy package
+However, it works well with this package
+#+begin_src shell :tangle no
+  pip install --user 'python-lsp-server[all]'
+#+end_src
+
+#+begin_src emacs-lisp
+  (use-package python-mode
+    :ensure t
+    :hook (python-mode . lsp-deferred)
+    :custom
+    (python-shell-interpreter "python3"))
+#+end_src
+****** Related links
+https://emacs-lsp.github.io/lsp-mode/page/lsp-pylsp/
 ** Rainbow Delimiters
 #+begin_src emacs-lisp
   (use-package rainbow-delimiters
