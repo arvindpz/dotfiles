@@ -2,6 +2,7 @@
 # Repo: https://github.com/andyfleming/oh-my-zsh
 # Direct Link: https://github.com/andyfleming/oh-my-zsh/blob/master/themes/af-magic.zsh-theme
 
+# https://misc.flogisoft.com/bash/tip_colors_and_formatting - Check colors for $FG / $BG here
 
 # settings
 typeset +H return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
