@@ -1079,8 +1079,7 @@ Provides dynamic tiling windows
   (use-package dired-open                        ; Prefer external applications for certain file types
     :after dired
     :custom
-    (dired-open-extensions '(("pdf" . "open")
-                             ("mp4" . "open"))))
+    (dired-open-extensions '(("mp4" . "open"))))
 
   (use-package dired-hide-dotfiles
     :hook
