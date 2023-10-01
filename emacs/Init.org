@@ -413,7 +413,10 @@ Check out [[https://emacsthemes.com/][emacsthemes]] or [[https://peach-melpa.org
                       ("py" . "src python")
                       ("rb" . "src ruby")
                       ("sh" . "src shell")
+                      ("sql" . "src sql")
                       ("jj" . "src java")
+                      ("js" . "src js")
+                      ("hh" . "src html")
                       ("cc" . "src C")
                       ("cp" . "src C++")))
       (add-to-list 'org-structure-template-alist hotkey))
@@ -867,6 +870,26 @@ However, it works well with this package
 #+end_src
 ****** Related links
 https://emacs-lsp.github.io/lsp-mode/page/lsp-pylsp/
+**** HTML and CSS
+#+begin_src emacs-lisp
+  (use-package emmet-mode
+    :ensure t
+    :defer t
+    :hook
+    (sgml-mode . emmet-mode)
+    (css-mode . emmet-mode)
+    (emmet-mode . emmet-preview-mode))
+#+end_src
+
+***** Keybindings
+| key | action                            |
+|-----+-----------------------------------|
+| C-j | Expand an already written snippet |
+|-----+-----------------------------------|
+
+***** Related Links
+https://github.com/smihica/emmet-mode
+
 ** Rainbow Delimiters
 #+begin_src emacs-lisp
   (use-package rainbow-delimiters
