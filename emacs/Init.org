@@ -233,7 +233,11 @@ However, if you use =:init=, it is going to override all the options specified a
     (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
 
     (evil-set-initial-state 'messages-buffer-mode 'normal)
-    (evil-set-initial-state 'dashboard-mode 'normal))
+    (evil-set-initial-state 'dashboard-mode 'normal)
+    (add-hook 'pdf-view-mode-hook
+              (lambda()
+                (set (make-local-variable 'evil-normal-state-cursor) (list nil))))
+    )
 
                                           ; Collection of modes with evil-key-bindings
   (use-package evil-collection
@@ -652,6 +656,44 @@ Works in org-mode
 
   (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'config/org-babel-tangle-config)))
 #+end_src
+
+* Reading
+** PDF
+*** Installation
+#+begin_src shell :tangle no
+  brew install poppler automake pkg-config
+#+end_src
+
+**** References
+https://stackoverflow.com/questions/70202413/configure-pdf-tools-in-emacs-running-on-macos
+
+*** Configuration
+#+begin_src emacs-lisp
+  (use-package pdf-tools
+    :ensure t
+    :mode ("\\.pdf\\'" . pdf-view-mode)
+    :hook
+    (pdf-view-mode . pdf-view-midnight-minor-mode)
+    :config
+    (pdf-view-display-size 'fit-page)
+    )
+#+end_src
+
+*** Other Configurations
+**** Stop blinking cursor around the pages
+#+begin_src emacs-lisp :tangle no
+  ;; This is done in evil configuration
+  ;; (set (make-local-variable 'evil-normal-state-cursor) (list nil))
+#+end_src
+
+***** References
+- https://github.com/politza/pdf-tools/issues/201
+- https://evil.readthedocs.io/en/latest/settings.html#cursor-display
+
+**** Highlight Colors
+The default color of the higlighted text when searching in PDFs using ~/~ can be changed by the following steps
+1. M-x customize-apropos isearch RET
+2. Edit PDF Isearch Match and change BG color as =torquise1=
 
 * Development
 ** General
