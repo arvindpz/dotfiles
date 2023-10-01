@@ -28,3 +28,9 @@ set runtimepath+=/usr/local/opt/fzf
 filetype on             " enable filetype detection
 filetype indent on      " load filetype-specific indent files
 filetype plugin on      " load filetype specific plugin files
+
+hi DiffAdd    term=bold    cterm=None ctermbg=None ctermfg=Green
+hi DiffChange term=bold    cterm=None ctermbg=None ctermfg=None
+hi DiffDelete term=bold    cterm=None ctermbg=None ctermfg=Red
+hi DiffText   term=reverse cterm=bold ctermbg=None ctermfg=None
+

@@ -4,3 +4,11 @@
 
 [includeIf "gitdir:~/work/"]
   path = ~/work/.gitconfig
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+[mergetool]
+  keepBackup = false
+[mergetool.vimdiff]
+  layout = "(LOCAL,REMOTE) / MERGED"
