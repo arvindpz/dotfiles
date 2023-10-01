@@ -63,6 +63,9 @@ However, if you use =:init=, it is going to override all the options specified a
   ;; create autosave files in the same path as it uses for sessions
   (setq auto-save-file-name-transforms
         `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
+
+  ;; Store backup files in one directory
+  (setq backup-directory-alist '(("" . "~/.emacs.d/var/backup")))
 #+end_src
 
 *** Helpful
