@@ -1,6 +1,13 @@
 #+TITLE: Emacs Configuration
 #+PROPERTY: header-args:emacs-lisp :tangle ~/.dotfiles/emacs/.emacs.d/init.el
 
+* TODO Note this down somewhere
+M-x which-key-show-major-mode gives a list of keybindings that we can perfrom in the current major mode
+Which key has many keybindings in general. Explore them if you want to become proficient with emacs
+
+This might be helpful in debugging init.el
+https://emacs.stackexchange.com/questions/27001/debugging-some-elisp-end-of-file-during-parsing-error-in-init-el
+
 * Packages
 ** Setup
 use-package is a nice way to install new packages to your config.
@@ -52,6 +59,11 @@ However, if you use =:init=, it is going to override all the options specified a
 
   (add-hook 'emacs-startup-hook #'display-startup-time)
 #+end_src
+
+** TODO Try using emacs with server and client way
+- Emacs is opening fast when using client-server way; Referred to [[https://briansunter.com/blog/emacs-daemon-macos][blogpost]]
+- However, The epdi iruka message is not coming up; This needs to be fixed
+- Give proper names to my-frame methods
 
 ** Useful Packages
 *** No Littering
@@ -231,14 +243,15 @@ However, if you use =:init=, it is going to override all the options specified a
     ;; Use visual line motions even outside of visual-line-mode buffers
     (evil-global-set-key 'motion "j" 'evil-next-visual-line)
     (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
-
     (evil-set-initial-state 'messages-buffer-mode 'normal)
     (evil-set-initial-state 'dashboard-mode 'normal)
+
     (add-hook 'pdf-view-mode-hook
               (lambda()
-                (set (make-local-variable 'evil-normal-state-cursor) (list nil))))
+                (set (make-local-variable 'evil-normal-state-cursor) (list nil))
+                (set (make-local-variable 'pdf-view-display-size) 'fit-page))
+              )
     )
-
                                           ; Collection of modes with evil-key-bindings
   (use-package evil-collection
     :ensure t
@@ -256,15 +269,29 @@ However, if you use =:init=, it is going to override all the options specified a
 #+end_src
 
 * General Configuration
+** Load Paths
+#+begin_src emacs-lisp
+  (add-to-list 'load-path "~/.dotfiles/emacs/lisp/")
+#+end_src
+
 ** Basic UI Configuration
 #+begin_src emacs-lisp
   (setq inhibit-startup-message t) ; Start up with Scratch
 
-  (scroll-bar-mode -1)        ; Disable visible scrollbar
-  (tool-bar-mode -1)          ; Disable the toolbar
-  (tooltip-mode -1)           ; Disable tooltips
-  (set-fringe-mode 10)        ; Set margins
-  (menu-bar-mode -1)          ; Disable the menu bar
+  (defun my-frame-config (&optional frame)
+    (with-selected-frame (or frame (selected-frame))
+      ;; do things to FRAME
+      (scroll-bar-mode -1)        ; Disable visible scrollbar
+      (tool-bar-mode -1)          ; Disable the toolbar
+      (tooltip-mode -1)           ; Disable tooltips
+      (set-fringe-mode 10)        ; Set margins
+      ;; (menu-bar-mode -1)          ; Disable the menu bar
+      (blink-cursor-mode 1)
+
+      ))
+
+  (add-hook 'after-make-frame-functions 'my-frame-config)
+  (add-hook 'after-init-hook 'my-frame-config)
 
   ;; (setq visible-bell t)    ; Turn off the alarm-bell
 
@@ -275,29 +302,36 @@ However, if you use =:init=, it is going to override all the options specified a
 
 ** Line Numbers
 #+begin_src emacs-lisp
-  (column-number-mode)                               ; Display column numbers in modeline
-  (global-display-line-numbers-mode t)               ; Display line numbers
-  (setq-default display-line-numbers-type 'visual)   ; Display relative line numbers, including wrapped content
+    (column-number-mode)                               ; Display column numbers in modeline
+    (global-display-line-numbers-mode t)               ; Display line numbers
+    (setq-default display-line-numbers-type 'visual)   ; Display relative line numbers, including wrapped content
 
-  ;; Disable line numbers for some modes
-  (dolist (mode '(org-mode-hook
-                  term-mode-hook
-                  shell-mode-hook
-                  treemacs-mode-hook
-                  eshell-mode-hook))
-    (add-hook mode (lambda () (display-line-numbers-mode 0))))
+    ;; Disable line numbers for some modes
+    (dolist (mode '(org-mode-hook
+                    term-mode-hook
+                    shell-mode-hook
+                    treemacs-mode-hook
+                    eshell-mode-hook
+                    pdf-view-mode-hook))
+      (add-hook mode (lambda () (display-line-numbers-mode 0))))
 #+end_src
 
 ** Font Configuration
 #+begin_src emacs-lisp
-  ;; Set font
-  (set-face-attribute 'default nil :font "Fira Code" :foundry "Retina" :height 150 :weight 'normal)
+  (defun my-frame-config1 (&optional frame)
+    (with-selected-frame (or frame (selected-frame))
+      ;; Set font
+      (set-face-attribute 'default nil :font "Fira Code" :foundry "Retina" :height 150 :weight 'normal)
 
-  ;; Set the fixed pitch face
-  (set-face-attribute 'fixed-pitch nil :font "Fira Code" :foundry "Retina" :height 140 :weight 'light)
+      ;; Set the fixed pitch face
+      (set-face-attribute 'fixed-pitch nil :font "Fira Code" :foundry "Retina" :height 140 :weight 'light)
 
-  ;; Set the variable pitch face
-  (set-face-attribute 'variable-pitch nil :font "Cantarell" :height 195 :weight 'regular)
+      ;; Set the variable pitch face
+      (set-face-attribute 'variable-pitch nil :font "Cantarell" :height 195 :weight 'regular)
+      ))
+
+  (add-hook 'after-make-frame-functions 'my-frame-config1)
+  (add-hook 'after-init-hook 'my-frame-config1)
 #+end_src
 
 ** UI Configuration
@@ -307,32 +341,46 @@ However, if you use =:init=, it is going to override all the options specified a
   ;; need to run the following command interactively so that mode line icons
   ;; display correctly:
   ;;
-  ;; M-x all-the-icons-install-fonts
+  ;; M-x nerd-icons-install-fonts
 
-  (use-package all-the-icons)                  ; Icons in Modeline
+  (defun my-frame-config4 (&optional frame)
+    (with-selected-frame (or frame (selected-frame))
+      ;; do things to FRAME
+      ;; (use-package nerd-icons)                  ; Icons in Modeline
 
-  ;; (use-package hide-mode-line)                 ; Hide Modeline
-  ;; Trying to hide Modeline in org-todo, org-agenda and org-tags popup. Not able to do it, YET
+      ;; (use-package hide-mode-line)                 ; Hide Modeline
+      ;; Trying to hide Modeline in org-todo, org-agenda and org-tags popup. Not able to do it, YET
 
-  (use-package doom-modeline
-    :init (doom-modeline-mode 1)
-    :custom ((doom-modeline-height 15)))
+      (use-package doom-modeline
+        :init (doom-modeline-mode 1)
+        :custom ((doom-modeline-height 15)))
 
-  ;; Display time in modeline
-  (display-time)
+      ;; Display time in modeline
+      (display-time)
+      ))
+
+  (add-hook 'after-make-frame-functions 'my-frame-config4)
+  (add-hook 'after-init-hook 'my-frame-config4)
 #+end_src
 
 *** Themes
 Check out [[https://emacsthemes.com/][emacsthemes]] or [[https://peach-melpa.org/themes][peach-melpa]] for if you want a different theme
 #+begin_src emacs-lisp
-  (use-package doom-themes
-    :init (load-theme 'doom-nord t))
+  (defun my-frame-config2 (&optional frame)
+    (with-selected-frame (or frame (selected-frame))
+      ;; do things to FRAME
+      (use-package doom-themes
+        :init (load-theme 'doom-nord t))
 
                                           ; Slightly darker color for non-coding space, helpful windows, etc.
-  (use-package solaire-mode
-    :ensure t
-    :config
-    (solaire-global-mode +1))
+      (use-package solaire-mode
+        :ensure t
+        :config
+        (solaire-global-mode +1))
+      ))
+
+  (add-hook 'after-make-frame-functions 'my-frame-config2)
+  (add-hook 'after-init-hook 'my-frame-config2)
 #+end_src
 
 ** Text Scaling
@@ -363,11 +411,15 @@ Check out [[https://emacsthemes.com/][emacsthemes]] or [[https://peach-melpa.org
 
 ** Org-Setup
 #+begin_src emacs-lisp
+  (use-package  valign
+    :ensure t)
+ 
   (defun writer/org-setup ()
     (org-indent-mode)
     (variable-pitch-mode 1)
     (auto-fill-mode 0)
     (visual-line-mode 1)
+    (valign-mode)
     (setq evil-auto-indent nil))
 #+end_src
 
@@ -459,17 +511,23 @@ Check out [[https://emacsthemes.com/][emacsthemes]] or [[https://peach-melpa.org
     (org-log-into-drawer t)
     (org-habit-graph-column 60)            ; Increase the width of the graph
     (org-clock-sound "~/.dotfiles/emacs/timer_bell.mp3")
+    (org-refile-use-outline-path t)
 
                                           ; List of Files that can show up in Agenda
     (org-agenda-files
      '("~/playground/Org-Files/Tasks.org"
        "~/playground/Org-Files/Habits.org"
+       "~/playground/Org-Files/Health.org"
        "~/playground/Org-Files/Birthdays.org"))
 
     ;; Move "Done" items to an Archive file
     (org-refile-targets
      '(("Archive.org" :maxlevel . 1)
-       ("Tasks.org" :maxlevel . 1)))
+       ("Tasks.org" :maxlevel . 1)
+       ;; Use the files that you visit as refile targets
+       ;; https://lists.gnu.org/archive/html/emacs-orgmode/2009-01/msg00373.html
+       (nil :maxlevel . 8)
+       ))
 
     ;; Not sure how the below works. Need to revisit
     ;; TODO: Start using agenda to get familiar with this
@@ -566,6 +624,10 @@ Check out [[https://emacsthemes.com/][emacsthemes]] or [[https://peach-melpa.org
     )
 #+end_src
 
+**** TODO Go through Georges answer in below for refiling withing the current buffer
+https://stackoverflow.com/questions/7509463/how-to-move-a-subtree-to-another-subtree-in-org-mode-emacs
+
+**** TODO Check out Artist mode for UML diagrams
 *** Org-Agenda
 | C-c C-x C-x | Resume clock of last clocked in item |
 | C-c C-x C-i | Start clock time                     |
@@ -674,8 +736,6 @@ https://stackoverflow.com/questions/70202413/configure-pdf-tools-in-emacs-runnin
     :mode ("\\.pdf\\'" . pdf-view-mode)
     :hook
     (pdf-view-mode . pdf-view-midnight-minor-mode)
-    :config
-    (pdf-view-display-size 'fit-page)
     )
 #+end_src
 
@@ -805,16 +865,16 @@ Autocompletions!
 
   ;; Company box didn't work in Ubuntu:/
   ;; However, company-posframe works:)
-  (use-package company-posframe
-    :ensure t
-    :custom
-    (company-posframe-show-metadata nil)
-    (company-posframe-show-indicator nil)
-    :hook (company-mode . company-posframe-mode))
-
-  ;; (use-package company-box                                  ; A little aesthetic enhancement for company mode
+  ;; (use-package company-posframe
   ;;   :ensure t
-  ;;   :hook (company-mode . company-box-mode))
+  ;;   :custom
+  ;;   (company-posframe-show-metadata nil)
+  ;;   (company-posframe-show-indicator nil)
+  ;;   :hook (company-mode . company-posframe-mode))
+
+  (use-package company-box                                  ; A little aesthetic enhancement for company mode
+    :ensure t
+    :hook (company-mode . company-box-mode))
 #+end_src
 
 *** Languages
@@ -827,6 +887,12 @@ lsp-mode for ruby runs with the help of Solargraph
 #+begin_src emacs-lisp
   (use-package ruby-mode
     :hook (ruby-mode . lsp-deferred))
+#+end_src
+
+Use RVM's default ruby for the current Emacs session
+#+begin_src emacs-lisp
+  (require 'rvm)
+  (rvm-use-default)
 #+end_src
 
 **** C/C++
@@ -991,9 +1057,16 @@ Store a history of you window panes viewed simultaneously during the current Ema
 ** Winum
 Quickly jump to other windows by typing =<n>  C-w C-w=
 #+begin_src emacs-lisp
-  (use-package winum
-    :config
-    (winum-mode))
+  (defun my-frameconfig6 (&optional frame)
+    (with-selected-frame (or frame (selected-frame))
+      ;; do things to FRAME
+      (use-package winum
+        :config
+        (winum-mode))
+      ))
+
+  (add-hook 'after-make-frame-functions 'my-frameconfig6)
+  (add-hook 'after-init-hook 'my-frameconfig6)
 #+end_src
 
 ** Edwina
@@ -1098,7 +1171,12 @@ Provides dynamic tiling windows
 
 ** Hi Da
 #+begin_src emacs-lisp
-  (with-eval-after-load 'auto-package-update
-    (message "Hi da, Epdi iruka?!"))
-#+end_src
+  (defun my-frame-config5 (&optional frame)
+    (with-selected-frame (or (selected-frame) frame)
+      (with-eval-after-load 'auto-package-update
+        (message "Hi da, Epdi iruka?!"))
+      ))
 
+  (add-hook 'after-make-frame-functions 'my-frame-config5)
+  (add-hook 'after-init-hook 'my-frame-config5)
+#+end_src
