@@ -978,6 +978,8 @@ However, it works well with this package
 #+end_src
 ****** Related links
 https://emacs-lsp.github.io/lsp-mode/page/lsp-pylsp/
+**** Java
+https://www.youtube.com/watch?v=Yah69AfYP34
 **** HTML and CSS
 #+begin_src emacs-lisp
   (use-package emmet-mode
