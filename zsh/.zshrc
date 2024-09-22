@@ -28,7 +28,6 @@ plugins=(
     git
     git-auto-fetch
     rand-quote
-    ripgrep
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
