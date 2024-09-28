@@ -10,3 +10,4 @@ fi
 
 sh $SCRIPT_DIR/install-oh-my-zsh.sh
 sh $SCRIPT_DIR/install-powerlevel10k.sh
+sh $SCRIPT_DIR/install-mise.sh
