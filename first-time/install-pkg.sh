@@ -6,6 +6,6 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     installer="brew install"
 fi
 
-function install-pkg() {
+function install_pkg() {
     eval "$installer $1"
 }
