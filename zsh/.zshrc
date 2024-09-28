@@ -96,7 +96,6 @@ bindkey -M menuselect '^j' vi-down-line-or-history
 source $ZSH_CUSTOM/scripts/script.sh
 
 [[ -f $HOME/work/shell-scripts/.work.sh ]] && source $HOME/work/shell-scripts/.work.sh
-# alias tsh="source /usr/local/bin/tsh $*"
 . "$HOME/.cargo/env"
 
 # Reference: https://kubernetes.io/docs/tasks/tools/included/optional-kubectl-configs-zsh/
