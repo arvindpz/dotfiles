@@ -4,7 +4,7 @@
 source $ZSH_CUSTOM/scripts/script.sh
 
 command -v stow
-[[ $? -ne 0 ]] && install-pkg stow
+[[ $? -ne 0 ]] && install_pkg stow
 
 tools=(
     # bash
