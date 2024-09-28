@@ -13,7 +13,7 @@ export PATH="/usr/local/opt/sphinx-doc/bin:/usr/local/opt/python@3.10/libexec/bi
 # https://github.com/ohmyzsh/ohmyzsh/blob/master/templates/zshrc.zsh-template
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH="$HOME/.dotfiles/.oh-my-zsh"
 export ZSH_CUSTOM="$HOME/.dotfiles/zsh/custom"
 
 # ZSH_THEME="custom-af-magic"
