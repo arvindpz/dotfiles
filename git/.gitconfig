@@ -1,16 +1,23 @@
+# This is Git's per-user configuration file.
+
 [user]
   email = parvind97@gmail.com
   name = boring-dude
 
 [includeIf "gitdir:~/work/"]
   path = ~/work/.gitconfig
+
 [diff]
-	tool = vimdiff
+  tool = vimdiff
+
 [merge]
-	tool = vimdiff
+  tool = vimdiff
+
 [mergetool]
   keepBackup = false
+
 [mergetool.vimdiff]
   layout = "(LOCAL,REMOTE) / MERGED"
+
 [rerere]
-	enabled = true
+  enabled = true
