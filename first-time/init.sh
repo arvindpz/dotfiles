@@ -7,3 +7,6 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   sh $SCRIPT_DIR/macos.sh  || exit 1
 fi
+
+sh $SCRIPT_DIR/install-oh-my-zsh.sh
+
