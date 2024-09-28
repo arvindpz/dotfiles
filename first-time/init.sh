@@ -9,4 +9,4 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 sh $SCRIPT_DIR/install-oh-my-zsh.sh
-
+sh $SCRIPT_DIR/install-powerlevel10k.sh
