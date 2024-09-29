@@ -28,7 +28,7 @@ tools=(
     dig
     emacs
     git
-    ripgrep
+    # ripgrep
     tmux
     vim
     zsh
@@ -48,4 +48,5 @@ kutty_tools=(
 
 echo ${kutty_tools[@]} | xargs bash ./sync
 
+echo "You are all setup ;)"
 exit
