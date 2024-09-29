@@ -17,8 +17,11 @@ command -v stow
 
 tools=(
     # bash
+    dig
     emacs
     git
+    ripgrep
+    tmux
     vim
     zsh
 )
