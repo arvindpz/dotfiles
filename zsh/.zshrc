@@ -1,3 +1,13 @@
+# Move through words in bash style
+# In bash, a word is a-zA-Z0-9
+# In zsh, a word is anything between two spaces
+# I would want "www.google.com" to be treated as 3 words
+autoload -U select-word-style
+select-word-style bash
+
+alias code="open -a Visual\ Studio\ Code"
+
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
