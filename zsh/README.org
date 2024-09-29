@@ -1,7 +1,70 @@
 #+TITLE: ZSH
 
-Install [[https://github.com/ohmyzsh/ohmyzsh][oh-my-zsh]] before configuring...
+* Some Background
+** Interactive Shell
+This is a shell that provides us a prompt and waits for the us to enter a command
+Once we enter, it executes it and provides us another prompt -- Interactive doofus
+Terminals are interactive shells
 
+To check if you are in a interactive shell, type the below
+```bash
+echo $0
+# -zsh The first character '-' indicates this is a interactive shell
+```
+
+** Non-interactive Shell
+Non-interactive shells are invoked by cron jobs or scripts or pipe commands or `bash -c` commands
+
+To check if you are in a interactive shell, type the below
+```bash
+bash -c 'echo $0'
+# bash The missing '-' character at the beginning denotes this is a non-interactive shell
+```
+
+** Summary / My Understanding
+Basically, if some scripts invoke other scripts, the shell basically invokes sub shells that are non-interactive
+
+* Configuration Files for ZSH
+** ZSH startup sequence
+1) /etc/zshenv   (login + interactive + other)
+2)   ~/.zshenv   (login + interactive + other)
+3) /etc/zprofile (login)
+4)   ~/.zprofile (login)
+5) /etc/zshrc    (login + interactive)
+6)   ~/.zshrc    (login + interactive)
+7) /etc/zlogin   (login)
+8)   ~/.zlogin   (login)
+
+Reference: https://github.com/sperlic/zShell/blob/master/templates/zlogin.zsh-template
+
+| Type | Order of config files |
+| Non-login Non-Interactive | zshenv |
+| Non-login Interactive | zshenv, zshrc |
+| Login Non-Interactive | zshenv, zprofile |
+| Login Interactive | zshenv, zprofile, zshrc, zlogin |
+
+** zshenv
+From the above, we can see that zshenv will be invoked for all sessions
+I couldn't think of what kind of configuration that should be put in zshenv.
+Maybe it should contain env variables that are required for everyone
+But I understood that it should not be bloated, else it will do unnecessary stuff for every shell invocation.
+
+** zprofile
+zprofile is loaded for login shells only
+Since this is loaded for both non-interactive and interactive sessions (as long as it is login session), env variables related to my own scripts can be placed here.
+
+** zshrc
+zshrc is loaded only for interactive sessions -- both logged in and non-logged in
+We can customise how the prompt looks, aliases and functions (that we will use) here
+
+** zlogin
+zlogin can be used to display welcome messages or run some commands that need to be run only once during the start of a session
+How this is different from zprofile is, zprofile runs before the zshrc and can contain environment variables
+zlogin is not the right place for env variables. Its more suitable for final processing tasks after opening a new session
+
+
+
+* TODOs
 You may want to update the ~sync~ and ~setup~ scripts if you come across some tool that you're going to use every now and then.
 
 I have only included a handful of tools which I remember now. I will try to add more eventually.
