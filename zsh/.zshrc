@@ -1,12 +1,5 @@
-# Move through words in bash style
-# In bash, a word is a-zA-Z0-9
-# In zsh, a word is anything between two spaces
-# I would want "www.google.com" to be treated as 3 words
-autoload -U select-word-style
-select-word-style bash
-
-alias code="open -a Visual\ Studio\ Code"
-
+# The default template can be found at
+# https://github.com/ohmyzsh/ohmyzsh/blob/master/templates/zshrc.zsh-template
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -15,16 +8,12 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH="/usr/local/opt/sphinx-doc/bin:/usr/local/opt/python@3.10/libexec/bin:$PATH"
-
-# The default template can be found at
-# https://github.com/ohmyzsh/ohmyzsh/blob/master/templates/zshrc.zsh-template
-
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.dotfiles/.oh-my-zsh"
-export ZSH_CUSTOM="$HOME/.dotfiles/zsh/custom"
+# Move through words in bash style
+# In bash, a word is a-zA-Z0-9
+# In zsh, a word is anything between two spaces
+# I would want "www.google.com" to be treated as 3 words
+autoload -U select-word-style
+select-word-style bash
 
 # ZSH_THEME="custom-af-magic"
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -49,20 +38,14 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# Preferences
-#
-export EDITOR='vim'
-
-export ZDOTDIR="$HOME/.dotfiles/zsh"
-export HISTFILE=$ZDOTDIR/.zsh_history
-
-export RIPGREP_CONFIG_PATH="$HOME/.dotfiles/ripgrep/.ripgreprc"
-
 # Aliases
 #
+alias cat="bat"
+alias code="open -a Visual\ Studio\ Code"
 alias gpp="g++ -std=c++17 -Wall"
-
 alias rb="ruby"
+alias tsh="source /usr/local/bin/tsh $*"
+
 
 # Plugin Options
 #
@@ -123,4 +106,4 @@ complete -C '/usr/local/bin/aws_completer' aws
 # To customize prompt, run `p10k configure` or edit ZDOTDIR/.p10k.zsh.
 [[ ! -f $ZDOTDIR/.p10k.zsh ]] || source $ZDOTDIR/.p10k.zsh
 source $ZSH_CUSTOM/themes/powerlevel10k/p10k.mise.zsh
-alias tsh="source /usr/local/bin/tsh $*"
+

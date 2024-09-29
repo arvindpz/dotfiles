@@ -1,9 +1,9 @@
 # Oh my zsh
 .oh-my-zsh
+.cache
 
 # ZSH
 zsh/custom/plugins
-zsh/.cache
 zsh/.zcompdump*
 zsh/.zsh_history
 zsh/.zshrc.pre-oh-my-zsh
