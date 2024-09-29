@@ -1,4 +1,11 @@
-custom
+.cache
+.p10k.zsh
+.oh-my-zsh
 .zcompdump.*
 .zsh_history
+# .zprofile             # This is needed to be present in the home directory for some reason
+.zshrc                  # Yes, IKR, zshrc is in the ignore list
+.zshrc.pre-oh-my-zsh
+.zshrc.post-oh-my-zsh
+custom
 README.org

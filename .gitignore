@@ -3,8 +3,11 @@
 
 # ZSH
 zsh/custom/plugins
+zsh/.cache
 zsh/.zcompdump*
 zsh/.zsh_history
+zsh/.zshrc.pre-oh-my-zsh
+zsh/.zshrc.post-oh-my-zsh
 
 # Emacs
 .emacs.d
