@@ -105,5 +105,5 @@ complete -C '/usr/local/bin/aws_completer' aws
 
 # To customize prompt, run `p10k configure` or edit ZDOTDIR/.p10k.zsh.
 [[ ! -f $ZDOTDIR/.p10k.zsh ]] || source $ZDOTDIR/.p10k.zsh
-source $ZSH_CUSTOM/themes/powerlevel10k/p10k.mise.zsh
+source $ZSH_CUSTOM/p10k.mise.zsh
 
