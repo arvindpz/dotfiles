@@ -10,7 +10,15 @@ export ZSH_CUSTOM="$ZSH_CONFIG/custom"
 # Actually when doing this for the first time,
 # the ZSH_CUSTOM variable won't be present,
 # unless you have defined it like above :) Mutta punnagai
-source $ZSH_CUSTOM/scripts/script.sh
+sh $DOTFILES/first-time/init.sh || exit 1
+
+source $DOTFILES/first-time/install-pkg.sh
+
+# Ref: https://github.com/arvindpz/dotfiles/blob/4899776abf1c2ea41e9e983a548f6e842186dcfd/first-time/macos.sh#L11-L17
+# For brew to work, we need to have the above line in ~/.zprofile
+# However, since we are will be creating a symlink to the ZSH_CONFIG/.zprofile file, an existing file will abort stow
+# So, we need to remove the existing file first
+rm ~/.zprofile
 
 command -v stow
 [[ $? -ne 0 ]] && install_pkg stow
