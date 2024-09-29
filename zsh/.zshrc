@@ -110,6 +110,7 @@ compinit
 # Reference: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-completion.html
 complete -C '/usr/local/bin/aws_completer' aws
 
-# To customize prompt, run `p10k configure` or edit ~/.dotfiles/zsh/.p10k.zsh.
-[[ ! -f ~/.dotfiles/zsh/.p10k.zsh ]] || source ~/.dotfiles/zsh/.p10k.zsh
+# To customize prompt, run `p10k configure` or edit ZDOTDIR/.p10k.zsh.
+[[ ! -f $ZDOTDIR/.p10k.zsh ]] || source $ZDOTDIR/.p10k.zsh
+source $ZSH_CUSTOM/themes/powerlevel10k/p10k.mise.zsh
 alias tsh="source /usr/local/bin/tsh $*"
