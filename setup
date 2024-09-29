@@ -37,13 +37,21 @@ tools=(
 echo ${tools[@]} | xargs stow -Rv
 
 kutty_tools=(
+    # awk
+    bat
     bash-completion
+    cowsay
     fdclone # fd
     fzf
+    jq
+    derailed/k9s/k9s # https://k9scli.io/topics/install/
+    kubernetes-cli
+    lolcat
     ripgrep
+    tldr
+    tmux
     zsh-autosuggestions
     zsh-syntax-highlighting
-    bat
 )
 
 echo ${kutty_tools[@]} | xargs bash ./sync
