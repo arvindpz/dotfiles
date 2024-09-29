@@ -1,6 +1,15 @@
 #!/bin/bash
 # First time setup
 
+export DOTFILES="$HOME/.dotfiles"
+
+export ZSH="$DOTFILES/.oh-my-zsh"
+export ZSH_CONFIG="$DOTFILES/zsh"
+export ZSH_CUSTOM="$ZSH_CONFIG/custom"
+
+# Actually when doing this for the first time,
+# the ZSH_CUSTOM variable won't be present,
+# unless you have defined it like above :) Mutta punnagai
 source $ZSH_CUSTOM/scripts/script.sh
 
 command -v stow
