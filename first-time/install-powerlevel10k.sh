@@ -19,6 +19,10 @@ fonts=(
 FONT_DIR="$HOME/Desktop/tmp-install-fonts"
 mkdir $FONT_DIR
 
+# Installing fonts may differ
+# For mint I had to do the following for MesloLGs to show up in terminal fonts
+# sudo cp $FONT_DIR /usr/share/fonts/truetype
+# sudo fc-cache -f
 for font in ${fonts[@]}; do
   curl -sL $font --output $FONT_DIR/$(basename $font)
   eval "$(OPEN $FONT_DIR/$(basename $font))"
